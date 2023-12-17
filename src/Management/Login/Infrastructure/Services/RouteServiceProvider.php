@@ -18,7 +18,6 @@ class RouteServiceProvider extends ServiceProvider
     public function __construct($app)
     {
         $appVersion = env('APP_VERSION');
-        Log::info('appVersion: ' . $appVersion);
         $this->setDependency(
             'api/' . $appVersion . '/login',
             'Src\Management\Login\Infrastructure\Controllers',
