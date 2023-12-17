@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Shared\Domain\Helper;
+namespace Src\Shared\Domain\Helper;
 
 trait HttpCodesDomainHelper
 {
