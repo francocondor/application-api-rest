@@ -63,7 +63,7 @@ abstract class RouteServiceProvider extends ServiceProvider
     {
         Route::prefix($this->prefix)
             ->namespace($this->namespace)
-            // ->middleware('api')
+            ->middleware('api')
             ->group(base_path($this->group));
     }
 }
