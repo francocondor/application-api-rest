@@ -7,11 +7,10 @@ use Illuminate\Support\Facades\Route;
 
 abstract class RouteServiceProvider extends ServiceProvider
 {
-
     private mixed $prefix;
-    private mixed $namespace;
+    private mixed $namespaceName;
     private mixed $group;
-    private ?bool $except = null;
+    private ?bool $except;
 
     /**
      * @param mixed $prefix
@@ -21,20 +20,19 @@ abstract class RouteServiceProvider extends ServiceProvider
      * @return void
      */
     public function setDependency(
-        mixed $prefix,
-        mixed $namespace,
-        mixed $group,
-        ?bool $except = null
-    ): void {
-        $this->prefix = $prefix;
-        $this->namespace = $namespace;
-        $this->group = $group;
-        $this->except = $except;
+         mixed $prefix,
+         mixed $namespace,
+         mixed $group,
+         ?bool $except = null
+    ): void
+    {
+       $this->prefix = $prefix;
+       $this->namespaceName = $namespace;
+       $this->group = $group;
+       $this->except = $except;
     }
 
     /**
-     * Define your route model bindings, pattern filters, etc.
-     *
      * @return void
      */
     public function boot(): void
@@ -43,8 +41,6 @@ abstract class RouteServiceProvider extends ServiceProvider
     }
 
     /**
-     * Define the routes for the application.
-     *
      * @return void
      */
     public function map(): void
@@ -53,17 +49,13 @@ abstract class RouteServiceProvider extends ServiceProvider
     }
 
     /**
-     * Define the "api" routes for the application.
-     *
-     * These routes are typically stateless.
-     *
      * @return void
      */
-    protected function mapRoutes()
+    public function mapRoutes(): void
     {
-        Route::prefix($this->prefix)
-            ->namespace($this->namespace)
-            ->middleware('api')
-            ->group(base_path($this->group));
+            Route::middleware('api')
+                ->prefix($this->prefix)
+                ->namespace($this->namespaceName)
+                ->group(base_path($this->group));
     }
 }
