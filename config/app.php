@@ -168,6 +168,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        // HEXAGONAL ZONE //
+        \Src\Management\Login\Infrastructure\Services\RouteServiceProvider::class,
     ])->toArray(),
 
     /*
