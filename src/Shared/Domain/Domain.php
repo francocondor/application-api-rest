@@ -24,5 +24,9 @@ abstract class Domain
         return $this->entity;
     }
 
-    protected abstract function isException(?string $exception): never;
+    /**
+     * @param string|null $exception
+     * @return void
+     */
+    protected abstract function isException(?string $exception): void;
 }

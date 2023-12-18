@@ -15,13 +15,13 @@ abstract class CustomController extends Controller
      * @param array|string|int|bool $response
      * @return JsonResponse
      */
-    protected function jsonResponse(int $status, bool $error, array|string|int|bool $response) :JsonResponse
+    protected function jsonResponse(int $status, bool $error, array|string|int|bool $response): JsonResponse
     {
+        dd($response);
         return response()->json([
-            "status" => $status, 
-            "error" => $error, 
+            "status" => $status,
+            "error" => $error,
             "message" => $response
         ]);
     }
-    
 }
