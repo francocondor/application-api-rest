@@ -8,8 +8,50 @@ use Src\Management\Login\Domain\ValueObjects\LoginAuthentication;
 
 final class LoginRepository implements LoginRepositoryContract
 {
+
+    /**
+     * @var User
+     */
+    private User $model;
+
+    /**
+     * @param User $model
+     */
+    public function __construct(User $model)
+    {
+        $this->model = $model;
+    }
+
+    /**
+     * @param LoginAuthentication $loginAuthentication
+     * @return Login
+     */
     public function login(LoginAuthentication $loginAuthentication): Login
     {
-        return new Login($loginAuthentication->value(), null);
+        $user = $this->userByEmail($loginAuthentication->value()['email']);
+        if (!$user) {
+            return new Login(null, 'USER_OR_PASSWORD_INCORRECT');
+        }
+
+        $check = $loginAuthentication->checkPassword($loginAuthentication->value()['password'], $user['password']);
+
+        if (!$check) {
+            return new Login(null, 'USER_OR_PASSWORD_INCORRECT');
+        }
+
+        return new Login($user);
+    }
+
+    /**
+     * @param string $email
+     * @return array|null
+     */
+    private function userByEmail(string $email): ?array
+    {
+        $user = $this->model
+            ->where('email', '=', $email)
+            ->select('id', 'first_name', 'email', 'password')
+            ->first();
+        return $user?->makeVisible('password')->toArray();
     }
 }
