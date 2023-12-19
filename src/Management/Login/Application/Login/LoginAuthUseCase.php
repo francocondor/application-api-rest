@@ -15,7 +15,6 @@ final class LoginAuthUseCase
 
     public function __invoke(array $request)
     {
-        // dd($request);
         return $this->loginRepositoryContract->login(new LoginAuthentication($request));
     }
 }

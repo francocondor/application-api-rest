@@ -17,7 +17,6 @@ abstract class CustomController extends Controller
      */
     protected function jsonResponse(int $status, bool $error, array|string|int|bool $response): JsonResponse
     {
-        dd($response);
         return response()->json([
             "status" => $status,
             "error" => $error,

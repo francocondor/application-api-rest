@@ -10,6 +10,6 @@ final class LoginRepository implements LoginRepositoryContract
 {
     public function login(LoginAuthentication $loginAuthentication): Login
     {
-        return new Login(null, null);
+        return new Login($loginAuthentication->value(), null);
     }
 }

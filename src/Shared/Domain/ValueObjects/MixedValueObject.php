@@ -15,7 +15,7 @@ abstract class MixedValueObject
     /**
      * @return mixed
      */
-    public function value():mixed
+    public function value(): mixed
     {
         return $this->value;
     }
