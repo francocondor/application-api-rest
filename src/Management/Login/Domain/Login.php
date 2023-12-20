@@ -16,12 +16,12 @@ final class Login extends Domain
     /**
      * @var array|null
      */
-    public function handler():array
+    public function handler(): array
     {
         return [
             "id" => $this->entity()['id'],
             "first_name" => $this->entity()['first_name'],
-            "email" => $this->entity()['email'], 
+            "email" => $this->entity()['email']
         ];
     }
 
@@ -32,11 +32,10 @@ final class Login extends Domain
      */
     protected function isException(?string $exception): void
     {
-        if(!is_null($exception)){
+        if (!is_null($exception)) {
             match ($exception) {
                 self::USER_OR_PASSWORD_INCORRECT => throw new NotLoginException("email or password incorrect", $this->badRequest())
             };
-
         }
     }
 }
