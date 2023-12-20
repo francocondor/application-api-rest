@@ -22,7 +22,7 @@ class RouteServiceProvider extends ServiceProvider
             'api/' . $appVersion . '/login',
             'Src\Management\Login\Infrastructure\Controllers',
             'Src/Management/Login/Infrastructure/Routes/Api.php',
-            true
+            false
         );
         parent::__construct($app);
     }

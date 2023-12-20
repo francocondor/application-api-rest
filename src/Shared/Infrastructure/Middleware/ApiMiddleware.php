@@ -12,8 +12,16 @@ final class ApiMiddleware
 
     use HttpCodesHelper; // Use HttpCodesHelper
 
-    public function handle(Request $request, Closure $next): mixed
-    {
+    /**
+     * @param Request $request
+     * @param Closure $next
+     * @return mixed
+     * @throws ApiAuthException
+     */
+    public function handle(
+        Request $request,
+        Closure $next
+    ): mixed {
         // Add your middleware logic here
         if (empty($request->header('authorization'))) {
             throw new ApiAuthException("Not auth authoritation is empty", $this->badRequest());

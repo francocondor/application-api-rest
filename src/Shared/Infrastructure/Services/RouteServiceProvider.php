@@ -4,6 +4,7 @@ namespace Src\Shared\Infrastructure\Services;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
+use Monolog\Handler\IFTTTHandler;
 
 abstract class RouteServiceProvider extends ServiceProvider
 {
@@ -20,16 +21,15 @@ abstract class RouteServiceProvider extends ServiceProvider
      * @return void
      */
     public function setDependency(
-         mixed $prefix,
-         mixed $namespace,
-         mixed $group,
-         ?bool $except = null
-    ): void
-    {
-       $this->prefix = $prefix;
-       $this->namespaceName = $namespace;
-       $this->group = $group;
-       $this->except = $except;
+        mixed $prefix,
+        mixed $namespace,
+        mixed $group,
+        ?bool $except = null
+    ): void {
+        $this->prefix = $prefix;
+        $this->namespaceName = $namespace;
+        $this->group = $group;
+        $this->except = $except;
     }
 
     /**
@@ -53,9 +53,16 @@ abstract class RouteServiceProvider extends ServiceProvider
      */
     public function mapRoutes(): void
     {
-            Route::middleware('api')
+        if ($this->except) {
+            Route::middleware(['api'])
                 ->prefix($this->prefix)
                 ->namespace($this->namespaceName)
                 ->group(base_path($this->group));
+        } else {
+            Route::middleware(['api', 'jwt'])
+                ->prefix($this->prefix)
+                ->namespace($this->namespaceName)
+                ->group(base_path($this->group));
+        }
     }
 }
