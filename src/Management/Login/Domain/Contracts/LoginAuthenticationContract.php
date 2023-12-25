@@ -18,4 +18,10 @@ interface LoginAuthenticationContract
      * @return bool
      */
     public function check(LoginJwt $loginJwt): bool;
+
+    /**
+     * @param LoginJwt $loginJwt
+     * @return mixed
+     */
+    public function get(LoginJwt $loginJwt): mixed;
 }

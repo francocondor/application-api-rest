@@ -67,5 +67,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'api' => \Src\Shared\Infrastructure\Middleware\ApiMiddleware::class, // Add ApiMiddleware
         'jwt' => \Src\Shared\Infrastructure\Middleware\AuthMiddleware::class, // Add AuthMiddleware
+        'role' => \Src\Shared\Infrastructure\Middleware\RoleMiddleware::class, // Add RoleMiddleware
     ];
 }

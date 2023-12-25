@@ -32,7 +32,9 @@ final class LoginAuthentication implements LoginAuthenticationContract
     public function auth(LoginAuthenticationParameters $loginAuthenticationParameters): string
     {
         return $this->jwt->encode(
-            [$loginAuthenticationParameters->handler()],
+            [
+                $loginAuthenticationParameters->handler()
+            ],
             $loginAuthenticationParameters->jwtKey()
         );
     }
@@ -60,5 +62,14 @@ final class LoginAuthentication implements LoginAuthenticationContract
         }
 
         return true;
+    }
+
+    public function get(LoginJwt $loginJwt): mixed
+    {
+        return $this->jwt::decode(
+            $loginJwt->value(),
+            $loginJwt->jwtKey(),
+            $loginJwt->jwtEncrypt()
+        )[0]->data;
     }
 }
