@@ -4,7 +4,7 @@ namespace Src\Management\Login\Infrastructure\Repositories\Eloquent;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Src\Application\Role\Infraestructure\Repositories\Eloquent\Role;
+use Src\Application\Role\Infrastructure\Repositories\Eloquent\Role;
 
 class User extends Model
 {
