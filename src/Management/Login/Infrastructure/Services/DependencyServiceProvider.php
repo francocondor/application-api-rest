@@ -7,13 +7,10 @@ use Src\Shared\Infrastructure\Services\DependencyServiceProvider as ServiceProvi
 final class DependencyServiceProvider extends ServiceProvider
 {
     /**
-     * Create a new instance of DependencyServiceProvider.
-     *
      * @return void
      */
     public function __construct($app)
     {
-        // Add your constructor logic here
         $this->setDependency([
             [
                 "useCase" => [
