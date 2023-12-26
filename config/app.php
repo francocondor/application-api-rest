@@ -169,8 +169,12 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         // HEXAGONAL ZONE //
+        // LOGIN //
         \Src\Management\Login\Infrastructure\Services\RouteServiceProvider::class,
         \Src\Management\Login\Infrastructure\Services\DependencyServiceProvider::class,
+        // FORGOT //
+        \Src\Management\Forgot\Infrastructure\Services\RouteServiceProvider::class,
+        \Src\Management\Forgot\Infrastructure\Services\DependencyServiceProvider::class,
     ])->toArray(),
 
     /*
