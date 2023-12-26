@@ -2,14 +2,9 @@
 
 namespace Src\Management\Login\Infrastructure\Services;
 
-use Illuminate\Support\Facades\Log;
 use Src\Shared\Infrastructure\Services\RouteServiceProvider as ServiceProvider;
 
-
-
-// use Illuminate\Support\Facades\Route;
-
-class RouteServiceProvider extends ServiceProvider
+final class RouteServiceProvider extends ServiceProvider
 {
 
     /**
@@ -22,7 +17,7 @@ class RouteServiceProvider extends ServiceProvider
             'api/' . $appVersion . '/login',
             'Src\Management\Login\Infrastructure\Controllers',
             'Src/Management/Login/Infrastructure/Routes/Api.php',
-            false
+            true
         );
         parent::__construct($app);
     }
