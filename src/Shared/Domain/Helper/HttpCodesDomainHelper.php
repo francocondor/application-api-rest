@@ -25,6 +25,11 @@ trait HttpCodesDomainHelper
         return 401;
     }
 
+    public function notFound(): int
+    {
+        return 404;
+    }
+
     public function internalError(): int
     {
         return 500;

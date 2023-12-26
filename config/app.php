@@ -175,6 +175,9 @@ return [
         // FORGOT //
         \Src\Management\Forgot\Infrastructure\Services\RouteServiceProvider::class,
         \Src\Management\Forgot\Infrastructure\Services\DependencyServiceProvider::class,
+        // USERS //
+        \Src\Application\User\Infrastructure\Services\RouteServiceProvider::class,
+        \Src\Application\User\Infrastructure\Services\DependencyServiceProvider::class,        
     ])->toArray(),
 
     /*
