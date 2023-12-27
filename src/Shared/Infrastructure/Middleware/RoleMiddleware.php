@@ -39,8 +39,6 @@ final class RoleMiddleware
             $request->route()->controller->getMiddleware()[0]["options"]["role"] ?? "*"
         );
 
-        // dd($check, "MIDDLEWARE");
-
         if (!$check) {
             throw new AuthException("Role is not valid", $this->unauthorized());
         }
