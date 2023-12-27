@@ -8,8 +8,7 @@ final class UserIndexUseCase
 {
     public function __construct(
         private readonly UserRepositoryContract $userRepositoryContract
-    )
-    {
+    ) {
     }
 
     public function __invoke()

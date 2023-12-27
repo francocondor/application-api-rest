@@ -19,7 +19,6 @@ final class Forgot extends Domain
      */
     protected function isException(?string $exception): void
     {
-        
         if (!is_null($exception)) {
             match ($exception) {
                 self::MAIL_FAILED => throw new MailFailedException("mail failed", $this->internalError())
