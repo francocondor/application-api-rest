@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Src\Application\Home\Infrastructure\Controllers\HomeController;
+use Src\Application\Home\Infrastructure\Controllers\StatusController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+$appVersion = env('APP_VERSION');
+
+Route::get('/', static function () use ($appVersion) {
+    return redirect('api/' . $appVersion);
 });
+
+Route::get('/' . $appVersion, HomeController::class);
+
+Route::get('/' . $appVersion . '/status', StatusController::class);
