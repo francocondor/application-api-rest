@@ -28,5 +28,5 @@ abstract class Domain
      * @param string|null $exception
      * @return void
      */
-    protected abstract function isException(?string $exception): void;
+    abstract protected function isException(?string $exception): void;
 }
